@@ -1,0 +1,25 @@
+{%  extends 'admin_base.html' %}
+{% from "_form_macros.html" import render_field %}
+
+{% block content %}
+    <div class="container">
+        <h4>{{ word.common_name }}</h4>
+        <h4>{{ word.category }}</h4>
+        <h4>{{ word.short_description }}</h4>
+
+
+        <form action="{{ url_for('admin.update_entry', word_id=word.id) }}" method="post">
+            {{ form.csrf_token }}
+            Common Name : {{ form.common_name }}
+            <br>
+            Tags : {{ form.tags }}
+            <br>
+            Category {{ form.category }}
+            <br>
+            {{ render_field(form.short_description, placeholder="Short Description") }}
+
+
+            <button class="btn btn-sm btn-success" type="submit">Add Word</button>
+        </form>
+    </div>
+{% endblock %}

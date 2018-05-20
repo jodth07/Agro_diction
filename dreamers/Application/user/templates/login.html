@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% from "_form_macros.html" import render_field %}
+
+{% block content %}
+
+<div class="user-login">
+  <div class="page-header">
+    <h2>Log In</h2>
+  </div>
+    <form action="{{ url_for('user.login') }}" method="post">
+    {{ form.csrf_token }}
+    <dl>
+      {{ render_field(form.email, placeholder="Email address") }}
+      {{ render_field(form.password, placeholder="Password") }}
+    </dl>
+    <button class="btn btn-sm btn-success" type="submit">Log In</button>
+  </form>
+  <em>Forgot your password? </em><a href="/reset/">reset password</a>
+  <br>
+    <em>Need an account? </em><a href="{{ url_for('user.user_registration') }}">Signup!!</a>
+</div>
+
+{% endblock %}

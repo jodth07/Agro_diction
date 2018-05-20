@@ -1,0 +1,40 @@
+{% extends "admin_base.html" %}
+{% from "_form_macros.html" import render_field %}
+
+{% block content %}
+    <div class="container align-items-center">
+        <div class="word-add">
+            <div class="page-header">
+                <h2>Please add new word information </h2>
+            </div>
+
+            <form action="{{ url_for('admin.create_entry') }}" method="post">
+                {{ form.csrf_token }}
+                <dl>
+                    {{ render_field(form.visibility)}}
+                    {{ render_field(form.category, placeholder="Category") }}
+                    {{ render_field(form.sub_category)}}
+
+                    {{ render_field(form.common_name, placeholder="Common Name") }}
+                    {{ render_field(form.scientific_name)}}
+                    {{ render_field(form.family)}}
+
+                    {{ render_field(form.other_names)}}
+                    {{ render_field(form.tags)}}
+                    {{ render_field(form.short_description, placeholder="Short Description") }}
+
+                    {{ render_field(form.definitions)}}
+                    {{ render_field(form.examples)}}
+                    {{ render_field(form.synonyms)}}
+                    {{ render_field(form.antonyms)}}
+                    {{ render_field(form.descriptions)}}
+
+                    {{ render_field(form.other_info)}}
+                    {{ render_field(form.source)}}
+
+                </dl>
+                <button class="btn btn-sm btn-success" type="submit">Add Word</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

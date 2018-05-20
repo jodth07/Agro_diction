@@ -1,0 +1,31 @@
+{%  extends 'admin_base.html' %}
+
+{% block content %}
+    <br>
+    <div class="container">
+        <div class="row">
+            <h3><a href="{{ url_for('admin.add_word') }}"> add new words</a> </h3>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-4">
+                <h3> defined words</h3>
+                <pre>
+    {% for word in words %}
+        <a href="{{ url_for('admin.view_word', word_id=word.id) }}"> {{ word.common_name }}</a>
+        {{ word.category }}
+
+    {% endfor %}
+    </pre>
+            </div>
+            <div class="col-4">
+                <h3> revised words</h3>
+
+            </div>
+            <div class="col-4">
+                <h3> published words</h3>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

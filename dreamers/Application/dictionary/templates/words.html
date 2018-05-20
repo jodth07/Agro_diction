@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <form class="navbar-form">
+            <h2 class="text-center"> Search The Dictionary</h2>
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <div class="input-group-btn">
+                    <button class="btn-sm btn-primary align-items-center">
+                        <!--<span class="oi oi-magnifying-glass"></span>-->
+                        <!--<i class="glyphicon glyphicon-search"></i>-->
+                        Submit
+                    </button>
+                </div>
+            </div>
+            <div class=" input-group-btn btn-group-justified btn-group-sm">
+                <button class=" btn-primary" type="button">Alphabetic</button>
+                <button class=" btn-primary" type="button">Plants</button>
+                <button class=" btn-primary" type="button">Animals</button>
+                <button class=" btn-primary" type="button">Tools</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+
+    <pre>
+    {% for word in words %}
+        <a href="{{url_for('dictionary.view_word', word_id=word.id)}}"> {{ word.common_name }} </a>
+            {{ word.short_description }}
+            {{ word.category }}
+    {% endfor %}
+    </pre>
+
+</div>
+{% endblock %}

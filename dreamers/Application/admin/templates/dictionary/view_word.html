@@ -1,0 +1,67 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+    <div class="container">
+
+        Word: {{ word.common_name }}
+        <br>
+        tags:   {% for tag in word.sg_tags %}
+                    <a href="">{{ tag }}</a>
+                {% endfor %}
+        <br>
+        Category : {{ word.category }}
+        <br>
+        {% if word.sub_category %}
+            Sub Category : {{ word.sub_category }}
+        <br>
+        {% endif %}
+        Word ID: {{ word.id }}
+        <br>
+        Scientific Name {{ word.scientific_name }}
+        <br>
+        Family {{ word.family }}
+        <br>
+        Short Description:
+            {{ word.short_description }}
+        <br>
+        Other Names {{ word.other_names }}
+        <br>
+        Scy Name : {{ word.scientific_name}}
+        <br>
+        definitions : {{ word.definitions }}
+        <br>
+        examples : {{ word.examples }}
+        <br>
+        synonyms : {{ word.synonyms }}
+        <br>
+        antonyms : {{ word.antonyms }}
+        <br>
+        descriptions : {{ word.descriptions }}
+        <br>
+        other_info : {{ word.other_info }}
+        <br>
+        source : {{ word.source }}
+        <br>
+        visibility : {{ word.visibility }}
+
+        {% if word.is_defined %}
+            <p>Word defined date: {{ word.define_date }}</p>
+            <p>Word definer ID: {{ word.definer_id }}</p>
+        {% endif %}
+
+        {% if word.is_revised %}
+            <p>Word defined date: {{ word.revised_date }}</p>
+            <p>Word definer ID: {{ word.reviser_id }}</p>
+        {% endif %}
+
+        {% if word.is_published %}
+            <p>Word defined date: {{ word.published_date }}</p>
+            <p>Word definer ID: {{ word.publisher_id }}</p>
+        {% endif %}
+
+      <br>
+        <a href="{{url_for('admin.update_entry', word_id=word.id)}}">Update Word</a>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% from "_form_macros.html" import render_field %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="page-header">
+            <h2>User Profile</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Hello</div>
+                    <div class="panel-body">{{current_user.first_name}}</div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">Account Actions</div>
+                    {% if current_user.email_confirmed %}
+                        <div class="panel-body">User ID{{ current_user.id }}</div>
+                        <form action="{{ url_for('user.edit_profile') }}" method="post">
+                            {{ form.csrf_token }}
+                            <dl>
+                                {{ render_field(form.first_name, placeholder="First Name") }}
+                                {{ render_field(form.last_name, placeholder="Last Name") }}
+                                {{ render_field(form.nick_name, placeholder="Nick Name") }}
+                            </dl>
+                                <button class="btn btn-sm btn-success" type="submit">Create New Account</button>
+                        </form>
+                    {% endif %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
