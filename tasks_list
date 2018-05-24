@@ -1,0 +1,52 @@
+Application
+ - Frontend HTML/CSS
+ - implement pages for items list view
+
+Admin
+    - implement search
+    - implement elasticsearch
+    Blog
+        -
+    Article
+        -
+    Contact
+        -
+    Dictionary
+        -
+    Home
+        -
+
+Article
+    - implement search
+    - implement elasticsearch
+
+Blog
+    - implement search
+    - implement elasticsearch
+
+Contact
+    - implement search ?
+    - implement elasticsearch
+
+Dictionary
+    - implement search
+    - implement elasticsearch
+
+Home
+    - implement search
+    - implement elasticsearch
+
+Database
+    - implement search
+    - implement elasticsearch
+
+Search
+    - implement search :
+        + https://stackoverflow.com/questions/42579400/search-function-query-in-flask-sqlalchemy
+        + https://stackoverflow.com/questions/39960942/flask-app-search-bar
+        + https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
+    - implement elasticsearch :
+        + https://github.com/chiangf/Flask-Elasticsearch
+        + https://www.packtpub.com/mapt/book/web_development/9781783983407/12/ch12lvl1sec96/full-text-search-with-elasticsearch
+    - implement search as you type :
+        + https://marcobonzanini.com/2015/08/10/building-a-search-as-you-type-feature-with-elasticsearch-angularjs-and-flask/
