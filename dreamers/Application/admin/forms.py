@@ -36,7 +36,7 @@ STATUS = [
 
 
 class DictionaryAddForm(FlaskForm):
-    common_name = StringField('Common Name', validators=[DataRequired(), Length(min=3, max=15)])
+    common_name= StringField('Common Name', validators=[DataRequired(), Length(min=3, max=15)])
     category = SelectField('Category', validators=[DataRequired()], choices=PART_OF_SPEECH)
     short_description = TextAreaField('Short Description', validators=[DataRequired(), Length(min=10, max=250)])
     tags = FieldList(StringField('Tags'), min_entries=2, max_entries=7)
@@ -45,9 +45,9 @@ class DictionaryAddForm(FlaskForm):
 
     other_names = FieldList(StringField('Other Names'), min_entries=1, max_entries=7)
     definitions = FieldList(TextAreaField('Definitions'), min_entries=1, max_entries=7)
-    examples = FieldList(TextAreaField('Examples'), min_entries=1, max_entries=7)
-    synonyms = FieldList(TextAreaField('Synonyms'), min_entries=1, max_entries=7)
-    antonyms = FieldList(TextAreaField('Antonyms'), min_entries=1, max_entries=7)
+    examples = FieldList(StringField('Examples'), min_entries=1, max_entries=7)
+    synonyms = FieldList(StringField('Synonyms'), min_entries=1, max_entries=7)
+    antonyms = FieldList(StringField('Antonyms'), min_entries=1, max_entries=7)
     descriptions = FieldList(TextAreaField('Descriptions'), min_entries=1, max_entries=7)
 
     other_info = FieldList(TextAreaField('Other Info'), min_entries=1, max_entries=7)
@@ -59,7 +59,7 @@ class DictionaryAddForm(FlaskForm):
 
 
 class DictionaryUpdateForm(FlaskForm):
-    common_name = StringField('Common Name', validators=[DataRequired(), Length(min=3, max=15)])
+    common_name= StringField('Common Name', validators=[DataRequired(), Length(min=3, max=15)])
     category = SelectField('Category', validators=[DataRequired()], choices=PART_OF_SPEECH)
     short_description = TextAreaField('Short Description', validators=[DataRequired(), Length(min=10, max=250)])
     tags = FieldList(StringField('Tags'), min_entries=2, max_entries=7)

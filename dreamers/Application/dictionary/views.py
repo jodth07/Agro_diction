@@ -1,18 +1,28 @@
-from flask import Blueprint, flash, render_template, request, redirect, url_for
-from sqlalchemy.exc import IntegrityError
+from flask import Blueprint, render_template, request
 
-from Application import db
-from .models import *
-from .forms import WordForm, PART_OF_SPEECH
+# Local Imports
+from .models import Dictionary
+from .forms import SearchForm
 
 
 dict_blueprint = Blueprint('dictionary', __name__, template_folder='templates')
 
 
-@dict_blueprint.route('/words/')
+@dict_blueprint.route('/words')
 def words():
-    all_words = Dictionary.query.all()
-    return render_template("words.html", words=all_words)
+    form = SearchForm(request.form)
+    all_words = Dictionary.query.limit(10)
+    n = 0;
+    words_set_1 = []
+    words_set_2 = []
+    for word in all_words:
+        n += 1;
+        if n <= 5:
+            words_set_1.append(word)
+        else:
+            words_set_2.append(word)
+
+    return render_template("words.html", words=all_words, form=form, words_set_1=words_set_1, words_set_2=words_set_2)
 
 
 @dict_blueprint.route('/words/<word_id>')
@@ -21,21 +31,22 @@ def view_word(word_id):
     return render_template('word.html', word=word)
 
 
-@dict_blueprint.route('/user/add', methods=['GET', 'POST'])
-def add_word():
-    form = WordForm(request.form)
-    form.category.choices = [(key, value) for key, value in PART_OF_SPEECH]
-    if request.method == 'GET':
-        return render_template('add_word.html', form=form)
-    if request.method == 'POST':
-        if form.validate_on_submit():
-            try:
-                new_word = Word(form.common_name.data, form.category.data)
-                db.session.add(new_word)
-                db.session.commit()
-                flash('Thanks for registering!', 'success')
-                return redirect(url_for('dictionary.words'))
-            except IntegrityError:
-                db.session.rollback()
-                flash('ERROR! word ({}) already exists.'.format(form.common_name.data), 'error')
-    return render_template('add_word.html', form=form)
+# @dict_blueprint.route('/search', methods=['GET', 'POST'])
+# def search():
+#     form = SearchForm(request.form)
+#     boy=['string one', 'string two']
+#
+#     if request.method == 'GET':
+#         return render_template('includes/search.html', form=form, boy=boy)
+#     if request.method == 'POST':
+#         if form.validate_on_submit():
+#             qry_data = form.query_text.data
+#             return search_results(qry_data)
+#
+#     return render_template('includes/search.html', form=form, boy=boy)
+
+
+@dict_blueprint.route('/words/results')
+def search_results(qry):
+
+    return render_template('search_results.html')

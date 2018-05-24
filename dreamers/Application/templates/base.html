@@ -22,11 +22,10 @@
 <body>
 
 <div class = "container">
-
+    <!--THIS IS THE MAIN CONTAINER-->
     <div class="container">
         <!--THIS IS NAV CONTAINER-->
         {% include "includes/header.html" %}
-
     </div>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -36,11 +35,8 @@
                     <div class="{{ category }}">{{ message }}</div>
                 {% endfor %}
             </div>
-
         {% endif %}
     {% endwith %}
-
-
 
     <div class="container">
         <!--TTHIS IS WERE MAIN CONTENT OF PAGE BODY GO-->

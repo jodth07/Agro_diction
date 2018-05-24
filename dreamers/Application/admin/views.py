@@ -7,11 +7,14 @@ from .forms import *
 from Application import db
 from Application.user.models import User
 from Application.dictionary.models import Dictionary
-# from dasa.dreamers.Application.dictionary.models import Dictionary
-admin_blueprint = Blueprint('admin', __name__, template_folder='templates')
+
+admin_blueprint = Blueprint('admin', __name__, template_folder='templates', url_prefix='/novis_ta')
 
 
-@admin_blueprint.route('/novisitors/')
+# ==================================================== #
+#       ADMIN: VIEW HOME STATS                         #
+# ==================================================== #
+@admin_blueprint.route('/')
 @login_required
 def admin_home():
     if current_user._role == 'user':
@@ -23,28 +26,28 @@ def admin_home():
 # ==================================================== #
 #       ADMIN: VIEW ARTICLES STATS AND CRUD               #
 # ==================================================== #
-@admin_blueprint.route('/novisitors/articles/')
+@admin_blueprint.route('/articles/')
 @login_required
 def view_articles():
-    return "articles crud"
+    return render_template("article/view_articles.html")
 
 
-@admin_blueprint.route('/novisitors/<article>')
+@admin_blueprint.route('/article/<article>')
 @login_required
 def article(article):
-    return "article crud {}".format(article)
+    return render_template("article/view_article.html")
 
 
 # ==================================================== #
 #       ADMIN: VIEW BLOGS STATS AND CRUD               #
 # ==================================================== #
-@admin_blueprint.route('/novisitors/blogs')
+@admin_blueprint.route('/blogs/')
 @login_required
 def view_blogs():
     return render_template('blog/view_blogs.html')
 
 
-@admin_blueprint.route('/novisitors/<blog>')
+@admin_blueprint.route('/blog/<blog>')
 @login_required
 def blog(blog):
     return "blog crud {}".format(blog)
@@ -55,16 +58,15 @@ def blog(blog):
 # ==================================================== #
 
 
-@admin_blueprint.route('/novisitors/words')
+@admin_blueprint.route('/words')
 @login_required
 def view_words():
     words = Dictionary.query.all()
-
     return render_template('dictionary/view_words.html', words=words)
 
 
 # sg -> setter and getter
-@admin_blueprint.route('/novisitors/word/<word_id>')
+@admin_blueprint.route('/word/<word_id>')
 @login_required
 def view_word(word_id):
 
@@ -75,7 +77,7 @@ def view_word(word_id):
     return render_template('dictionary/view_word.html', word=word)
 
 
-@admin_blueprint.route('/addwords/', methods=['GET', 'POST'])
+@admin_blueprint.route('/addword/', methods=['GET', 'POST'])
 @login_required
 def create_entry():
     current_user_id = current_user.id
@@ -119,7 +121,7 @@ def create_entry():
     return render_template('dictionary/create_entry.html', form=form)
 
 
-@admin_blueprint.route('/editwords/<word_id>', methods=['GET', 'POST'])
+@admin_blueprint.route('/editword/<word_id>', methods=['GET', 'POST'])
 @login_required
 def update_entry(word_id):
     word = Dictionary.query.get(word_id)
@@ -168,7 +170,7 @@ def update_entry(word_id):
 # ==================================================== #
 #           ADMIN: VIEW CONTACTS                       #
 # ==================================================== #
-@admin_blueprint.route('/novisitors/contact')
+@admin_blueprint.route('/contact')
 @login_required
 def contact_us():
     return "contact_us crud "
@@ -177,7 +179,7 @@ def contact_us():
 # ==================================================== #
 #           ADMIN: VIEW USERS STATS                    #
 # ==================================================== #
-@admin_blueprint.route('/novisitors/view_users/')
+@admin_blueprint.route('/view_users/')
 @login_required
 def admin_view_users():
     if current_user.clearance != 7000:

@@ -12,6 +12,7 @@ class Dictionary(db.Model):
 
     id = db.Column(db.Integer, Sequence('dictionary_id_seq', start=100001, increment=1), primary_key=True)
     common_name = db.Column(db.String, nullable=False)
+    name = db.Column(db.String, nullable=False)
     origin = db.Column(db.String, nullable=True)
     category = db.Column(db.String, nullable=False)
     short_description = db.Column(db.String, nullable=False)
@@ -53,6 +54,7 @@ class Dictionary(db.Model):
                  scientific_name=[], sub_category="", description=[], family=''):
         self.sg_tags = tag
         self.common_name = common_name
+        self.name = common_name
         self.category = category
         self.short_description = short_description
 
@@ -159,6 +161,6 @@ class Dictionary(db.Model):
         return json.loads(self.description)
 
     @sg_description.setter
-    def sg_description(self, lister):
-        self.description = json.dumps(lister)
+    def sg_description(self, description):
+        self.description = json.dumps(description)
 

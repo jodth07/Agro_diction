@@ -3,31 +3,86 @@
 {% block content %}
     <div class="container">
 
-        <h3>Word: {{ word.common_name }}</h3>
-        <h3>Category : {{ word.category }}</h3>
-        <p>Word ID: {{ word.id }}</p>
-
-        {% if word.is_defined %}
-            <p>Word defined date: {{ word.define_date }}</p>
-            <p>Word definer ID: {{ word.defined_user_id }}</p>
+        Word: {{ word.common_name }}
+        {% if word.sg_tags %}
+            <br> tags:
+            {% for tag in word.sg_tags %}
+                <a href="">{{ tag }}</a>
+            {% endfor %}
         {% endif %}
-
-        {% if word.is_revised %}
-            <p>Word defined date: {{ word.revised_date }}</p>
-            <p>Word definer ID: {{ word.reviser_id }}</p>
-        {% endif %}
-
-        {% if word.is_published %}
-            <p>Word defined date: {{ word.published_date }}</p>
-            <p>Word definer ID: {{ word.publisher_id }}</p>
-        {% endif %}
-
-        {% if word.other_names %}
-            {% for name in word.other_names  %}
+        {% if word.sg_other_names %}
+            <br>
+            Other Names :
+            {% for name in word.sg_other_names %}
                 {{ name }}
             {% endfor %}
-
         {% endif %}
+        <br>
+        Category : {{ word.category }}
+        {% if word.sub_category %}
+            <br>
+            Sub Category : {{ word.sub_category }}
+        {% endif %}
+        <br>
+        Word ID : {{ word.id }}
+        <br>
+        Scientific Name : {{ word.scientific_name }}
+        <br>
+        Family : {{ word.family }}
+        <br>
+        Short Description : {{ word.short_description }}
+
+        {% if word.sg_definitions %}
+            <br>
+            definitions :
+            {% for definition in  word.sg_definitions %}
+                {{ definition }}
+            {% endfor %}
+        {% endif %}
+        {% if word.sg_examples %}
+            <br>
+            examples :
+            {% for example in word.sg_examples %}
+                {{ example }}
+            {% endfor %}
+        {% endif %}
+
+        {% if word.sg_synonyms %}
+            <br>
+            synonyms :
+            {% for synonym in  word.sg_synonyms %}
+                {{ synonym }}
+            {% endfor %}
+        {% endif %}
+
+        {% if word.sg_antonyms %}
+            <br>
+            antonyms :
+            {% for antonym in  word.sg_antonyms %}
+                {{ antonym }}
+            {% endfor %}
+        {% endif %}
+
+        {% if word.sg_description %}
+            <br>
+            descriptions :
+            {% for desc in word.sg_description %}
+                <br>{{ desc }}
+            {% endfor %}
+        {% endif %}
+
+        {% if word.sg_other_info %}
+            <br>
+            other_info :
+            {% for info in word.sg_other_info %}
+                {{ info }}
+            {% endfor %}
+        {% endif %}
+
+        <br>
+        source : {{ word.source }}
+        <br>
+{#        visibility : {{ word.visibility }}#}
 
     </div>
 

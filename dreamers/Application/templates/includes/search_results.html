@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        {% if count == 0 %}
+            <p>The word {{ searched }} is not yet in the dictionary</p>
+        {% else %}
+            {% for word in results %}
+                <pre>
+                <a href="{{url_for('dictionary.view_word', word_id=word.id)}}"> {{ word.common_name }} </a>
+                <p> {{ word.short_description }}</p>
+            </pre>
+
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

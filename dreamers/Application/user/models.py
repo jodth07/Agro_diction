@@ -34,6 +34,8 @@ class User(db.Model):
     first_name = db.Column(db.String, nullable=False)
     last_name = db.Column(db.String, nullable=False)
 
+    name = db.Column(db.String, nullable=False)
+
     nick_name = db.Column(db.String, nullable=True)
     _has_nick = db.Column(db.Boolean, default=False)
 
@@ -60,6 +62,7 @@ class User(db.Model):
                  email_confirmed_date=None):
         self.first_name = first_name
         self.last_name = last_name
+        self.name = last_name + ", " + first_name
         self.email = email
 
         self.email_confirmation_sent_date = datetime.now()
