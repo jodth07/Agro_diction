@@ -1,2 +1,11 @@
 .idea/*
+venv
+*.pyc
+staticfiles
+.env
+*.sqlite3
+Pipfile
+api/medias/*
+api/.DS_Store
 .DS_Store
+db_set/*
