@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'api',
     'drf_yasg',
     'images',
-    'users'
+    'users',
+    'dictionary'
 ]
 
 AUTH_USER_MODEL = "users.User" 

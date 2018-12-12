@@ -15,13 +15,6 @@ class Image(EmbeddedDocument):
         return f"{self.name}" 
 
 
-class ImageSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = Image
-        exclude = ()
-
-
 class Gallery(EmbeddedDocument):
     name = fields.StringField(max_length=100)
     images = fields.ListField(fields.EmbeddedDocumentField(Image))
@@ -30,8 +23,3 @@ class Gallery(EmbeddedDocument):
     def __str__(self):
         return f"{self.name}" 
 
-class GallerySerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Gallery
-        exclude = ()
