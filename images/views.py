@@ -10,8 +10,8 @@ from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
 # local imports
-from .models import Image, ImageSerializer
-from .models import Gallery, GallerySerializer
+from .models import Image, Gallery 
+from .serializers import ImageSerializer, GallerySerializer
 
 class ImageView(APIView):
     """
