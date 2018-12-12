@@ -7,12 +7,7 @@ from django.contrib.auth.models import (
 from django.db import transaction, models
 from rest_framework import serializers
 from django.db.models.signals import post_save
-
-CLEARANCE_CHOICES = (
-    ("Definer", "Definer"),
-    ("Reviewer", "Reviewer"),
-    ("Publisher", "Publisher")
-)
+from mongoengine import Document, EmbeddedDocument, fields
 
 
 class UserManager(BaseUserManager):
@@ -49,7 +44,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     admin-compliant permissions.
  
     """
-    clearance = models.CharField(max_length=8, choices=CLEARANCE_CHOICES, default="Definer")
     email = models.EmailField(max_length=40, unique=True)
     first_name = models.CharField(max_length=30, blank=False)
     last_name = models.CharField(max_length=30, blank=False)
@@ -58,7 +52,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateField(auto_now=True)
     phone = models.CharField(max_length=18, default="", blank=True)
     
-    is_stylist = models.BooleanField(default=False)
+    is_definer = models.BooleanField(default=True)
+    is_reviewer = models.BooleanField(default=False)
+    is_publisher = models.BooleanField(default=False)
 
     def __str__(self):
         self.name = f"{self.last_name}, {self.first_name}"
@@ -82,3 +78,12 @@ class UserSerializer(serializers.ModelSerializer):
         exclude = ()
         extra_kwargs = {'password': {'write_only': True}}
 
+
+class Editor(Document):
+    first_name = fields.StringField(max_length=250)
+    last_name = fields.StringField(max_length=250)
+    email = fields.EmailField(max_length=250)
+    
+    is_definer = fields.BooleanField(default=True)
+    is_reviewer = fields.BooleanField(default=False)
+    is_publisher = fields.BooleanField(default=False)
