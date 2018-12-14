@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from rest_framework_mongoengine import routers as merouters
+from rest_framework_mongoengine import routers as routers
 from .views import ToolViewSet, ContactsView, PostSerializerView
 
-merouter = merouters.DefaultRouter()
-merouter.register(r'tool', ToolViewSet)
+router = routers.DefaultRouter()
+router.register(r'tool', ToolViewSet)
 
 urlpatterns = [
     path('contacts/<int:contact_id>', ContactsView.as_view(), name='id-contacts'),
@@ -17,7 +17,7 @@ urlpatterns = [
 ]
 
 
-urlpatterns += merouter.urls
+urlpatterns += router.urls
 
 
  
