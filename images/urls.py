@@ -2,11 +2,15 @@
 
  
 from django.urls import path
-from .views import ImageView, GallerysView
+from rest_framework_mongoengine import routers
+
+from .views import GallerysView
  
+router = routers.DefaultRouter()
+router.register(r'gallery', GallerysView)
+
+
 urlpatterns = [
-    path('', ImageView.as_view(), name='all-media'),
-    path('<media_id>', ImageView.as_view(), name='id-media'),
-    path('g/', GallerysView.as_view(), name='all-media'),
-    path('g/<media_id>', GallerysView.as_view(), name='all-media')
 ]
+
+urlpatterns += router.urls

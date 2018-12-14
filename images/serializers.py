@@ -9,8 +9,8 @@ class ImageSerializer(EmbeddedDocumentSerializer):
         exclude = ()
 
 
-class GallerySerializer(EmbeddedDocumentSerializer):
-    images = ImageSerializer(many=True)
+class GallerySerializer(DocumentSerializer):
+    
     class Meta:
         model = Gallery
         exclude = ()

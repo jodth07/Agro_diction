@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from api.models import Contact, ContactSerializer
 
-from rest_framework_mongoengine import viewsets as meviewsets
+from rest_framework_mongoengine import viewsets
 from .serializers import ToolSerializer, BlogSerializer, PostSerializer
 from .models import Tool, Blog, Post
  
@@ -25,7 +25,7 @@ class ContactsView(APIView):
     def post(self, request):
             
         serializer = ContactSerializer(data=request.data)
-        if serializer.is_valid():
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
@@ -40,7 +40,7 @@ class ContactsView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
         
 
-class ToolViewSet(meviewsets.ModelViewSet):
+class ToolViewSet(viewsets.ModelViewSet):
     lookup_field = 'id'
     queryset = Tool.objects.all()
     serializer_class = ToolSerializer
