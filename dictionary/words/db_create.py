@@ -17,16 +17,6 @@ db.drop_all()
 # create the database and the database table
 db.create_all()
 
-jd = User('Olson', 'Dimanche', 'jodth09@gmail.com', 'Jd25390725', 'jodth07', 7000)
-jd.email_confirmed = True
-jd.email_confirmation_sent_date = datetime.now()
-jd.email_confirmed_date = datetime.now()
-jd.authenticated=True
-jd.has_nick = True
-
-db.session.add(jd)
-# =========  =========  =========  =========  =========  ========= #
-
 Non= "Arawout"
 Lot_Non= "Mazonbèl"
 Tip= "Plant"
@@ -581,40 +571,3 @@ article_1.description = [ "In two weeks we will celebrate 5 years of living here
                           "To start would probably be high quality cut-and-carry pasture plants like elephant grass, mulberry and tree marigold.",
                           "Fruit, bamboo and lumber trees can also be planted for longer term production. It seems like sugar cane would produce in sunny locations and would hold the soil."
                         ]
-db.session.add(article_1)
-
-
-db.session.add(areyen)
-db.session.add(adatoda)
-db.session.add(akajou_peyi)
-db.session.add(akwatik)
-db.session.add(anana)
-db.session.add(kabrit)
-db.session.add(new_word)
-db.session.add(new_word2)
-db.session.add(new_word3)
-
-
-# db.session.add(word)
-
-
-
-db.session.commit()
-#
-# x_word = Dictionary.query.get(100001)
-# x_word.common_name = 'OJD'
-
-# db.session.update(x_word)
-db.session.commit()
-    # return db
-
-
-# ####### ######### ####### ####### ######### #### NOT WORK?
-# DON'T FORGET TO ALTER                          #
-# SEQUENCE ID'S OF USERS TO 1001                 #
-# ALTER SEQUENCE users_id_seq RESTART WITH 1001; #
-# AND WORDS TO  100001                           #
-# ALTER SEQUENCE words_id_seq RESTART WITH 100001; #
-# ####### ######### ####### ####### ######### ####
-# UPDATE users SET _role='admin', _cleared=True, nick_name='jodth07',
-# _has_nick = True, _clearance=7000 WHERE id=1001;

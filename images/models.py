@@ -9,6 +9,7 @@ class Image(EmbeddedDocument):
     image = fields.FileField()
     name = fields.StringField(max_length=100)
 
+
 class Gallery(Document):
     name = fields.StringField(max_length=100)
     images = fields.ListField(fields.EmbeddedDocumentField(Image))

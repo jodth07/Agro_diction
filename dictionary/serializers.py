@@ -23,9 +23,9 @@ class AntonymSerializer(EmbeddedDocumentSerializer):
 
 
 class WordSerializer(DocumentSerializer):
-    definitions = DefinitionSerializer(many=True)
-    synonyms = SynonymSerializer()
-    antonyms = AntonymSerializer()
+    # definitions = DefinitionSerializer(many=True)
+    # synonyms = SynonymSerializer()
+    # antonyms = AntonymSerializer()
     
     class Meta:
         model = Word

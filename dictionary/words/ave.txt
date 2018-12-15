@@ -1,15 +1,18 @@
 
 Non='Ave'
-Lot_Non= ""
 Tip='plant'
 Fanmi='Phytolacaceae'
-Non Syantifik='Petiveria alliacea L.'
+Non_Syantifik='Petiveria alliacea L.'
 Orijin='Plant sa sòti an Amerik-Santral avèk zile Karayib yo. Ou kapab jwenn li tou nan anpil lòt rejyon twopikal tankou Amerik-di-Sid, Afrik, ak Azi.'
+
 Deskripsyon='Ave se yon plant èbase. Li kapab fleri 60 jou aprè yo plante li. Plant lan genyen yon tij principal ki fè anpil ti branch trè fen men pati tij la ki pre avèk tè a di anpil e li kapab grandi rive  jiska 1 mèt wotè.'
 Li pwodwi yon lwil esansyèl ki fè li santi fò anpil. Gras a sistèm rasin plant sa a, li kapab repouse fasilman si yo koupe pye a. Yo konsidere plant sa tankou yon plant nwizib anpil kote a koz de sa.'
+
 Fèy='Fèy li yo gen yon koule vèt fonse avèk yon fòm alonje.'
 Flè='Ave fleri how many times per year? Li bay yon bann ti flè blanch nan pwent branch li yo ki genyen yon longè ant 10 a 40 santimèt.'
 Fwi ak Grenn	Fwi plant sa a rive 8 milimèt longè. Lè fwi yo sèk, yo kapab genyen ant 1 a 6 kwòk nan pwent yo ki pèmèt yo kole sou rad moun.'
 Izaj='Nan tan lontan, Endyen peyi Brezil yo te konn itilize ave pou prepare yon pwazon yo rele kira pou pase nan pwent flèch yo lè yo pral nan lagè, lachas, ak lapèch. Kira se yon anestezi. Moun konsidere ave tankou yon plant mistik. Yo fè beny avèk fèy li yo pou kwape? move espri sou moun. Yo konn lave objè, tankou bato, avèk li tou. Moun fè anpil remèd avèk fèy ak rasin ave. Remèd pou maldan, maltèt, lafyèv, sinizit, lagal, rimatis elatriye. Ji fèy ave a kapab sèvi antiseptik pou maleng e li bay yon pwodwi chimik ki rele nitrat potasyòm ki bon pou moun ki gen difikilte pou pipi. Atansyon, te fèy oubyen rasin ave kapab fè fanm ansent avòte.'
 Devlopman='Plant sa a gen yon sistèm rasin ki pèmèt li pran trè byen nan divès kondisyon.'
 Repwodiksyon='Itilize grenn nan pou prepare pepinyè ave oubyen yon ti bout branch ak ne ki pa di epi plante plan.'
+
+description = [Deskripsyon, Fèy, Flè, Fwi, Izaj, Devlopman, Repwodiksyon]

@@ -12,14 +12,16 @@ class Definition(EmbeddedDocument):
     definition = fields.StringField(max_length=250)
     example  = fields.StringField(max_length=250)
 
+
 class Synonym(EmbeddedDocument):
-    synonym = fields.ReferenceField('Word')
+    synonym = fields.ReferenceField('Word', dbref=True)
+
 
 class Antonym(EmbeddedDocument):
-    antonym = fields.ReferenceField('Word')   
+    antonym = fields.ReferenceField('Word', dbref=True)   
 
-class Word(Document):
-   
+
+class Word(Document):   
     common_name = fields.StringField(max_length=250)
     name = fields.StringField(max_length=250)
     other_names = fields.ListField(fields.StringField(max_length=250))
@@ -34,7 +36,7 @@ class Word(Document):
 
     definitions = fields.ListField(fields.EmbeddedDocumentField(Definition))
     short_description = fields.StringField(max_length=250)
-    description = fields.StringField(max_length=250)
+    description = fields.ListField(fields.StringField(max_length=250))
     synonyms = fields.ListField(fields.EmbeddedDocumentField(Synonym))
     antonyms = fields.ListField(fields.EmbeddedDocumentField(Antonym))
     

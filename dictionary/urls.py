@@ -9,8 +9,6 @@ router.register(r'dictionary', WordView)
 
  
 urlpatterns = [
-    # path('', WordView.as_view(), name='all-wrods'),
-    # path('<word_id>', WordView.as_view(), name='id-word'),
 ] 
 
 urlpatterns += router.urls
